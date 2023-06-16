@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+# Packages ----
+
+library(dplyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+here <- function(...) fs::path_home("Downloads", "mvp", ...)
+
+# Data ----
+
+input_name <- "swim.csv"
+input_path <- here("input", input_name)
+input_path
+
+raw <- read_csv(input_path, show_col_types = FALSE)
+raw
+
+# Clean ----
+
+# Localize beach
+lookup_table <- tribble(
+      ~where, ~english,
+     "beach",     "US",
+     "coast",     "US",
+  "seashore",     "UK",
+   "seaside",     "UK"
+)
+localized <- raw |> 
+  left_join(lookup_table)
+
+# Celsify temp
+f_to_c <- function(x) (x - 32) * 5/9
+clean <- localized |> 
+  mutate(temp = if_else(english == "US", f_to_c(temp) * 5/9, temp))
+
+clean
+
+# Save ----
+
+output_path <- here("output", paste0("clean_", input_name))
+output_path
+
+write_csv(clean, output_path)
+```
