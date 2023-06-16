@@ -23,5 +23,5 @@ localize_beach <- function(data) {
   )
   # style: on
 
-  left_join(data, lookup_table, by = join_by(where))
+  left_join(data, lookup_table, by = join_by("where"))
 }
