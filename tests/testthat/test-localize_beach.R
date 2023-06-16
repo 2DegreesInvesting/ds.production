@@ -11,5 +11,5 @@ test_that("knows if a place is in US or UK", {
 })
 
 test_that("if the column `where` is missing errors gracefully", {
-  localize_beach(tibble(bad = "bad"))
+  expect_error(localize_beach(tibble(bad = "bad")), "where.*not TRUE")
 })
