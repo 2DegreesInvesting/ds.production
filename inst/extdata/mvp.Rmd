@@ -12,12 +12,10 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-# Packages ----
-
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
-# Functions ----
+
 
 mvp_path <- function(...) fs::path_home("Downloads", "mvp", ...)
 
@@ -40,28 +38,15 @@ celsify_temp <- function(data) {
 
 f_to_c <- function(x) (x - 32) * 5/9
 
-# Data ----
+
 
 input_name <- "swim.csv"
 input_path <- mvp_path("input", input_name)
-input_path
-
 raw <- read_csv(input_path, show_col_types = FALSE)
-raw
-
-# Clean ----
-
 
 localized <- localize_beach(raw)
-
 clean <- celsify_temp(localized)
 
-clean
-
-# Save ----
-
 output_path <- mvp_path("output", paste0("clean_", input_name))
-output_path
-
 write_csv(clean, output_path)
 ```
