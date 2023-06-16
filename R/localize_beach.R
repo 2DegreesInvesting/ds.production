@@ -11,6 +11,8 @@
 #' data <- tibble(where = c("beach", "seashore"))
 #' localize_beach(data)
 localize_beach <- function(data) {
+  stopifnot(hasName(data, "where"))
+
   # style: off
   lookup_table <- tribble(
         ~where, ~english,
