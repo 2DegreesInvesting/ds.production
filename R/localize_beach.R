@@ -13,7 +13,7 @@
 localize_beach <- function(data) {
   stopifnot(hasName(data, "where"))
 
-  # style: off
+  # styler: off
   lookup_table <- tribble(
         ~where, ~english,
        "beach",     "US",
@@ -21,7 +21,7 @@ localize_beach <- function(data) {
     "seashore",     "UK",
      "seaside",     "UK"
   )
-  # style: on
+  # styler: on
 
   left_join(data, lookup_table, by = join_by("where"))
 }
