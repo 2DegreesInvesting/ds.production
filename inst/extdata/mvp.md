@@ -6,12 +6,12 @@
 
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
-here <- function(...) fs::path_home("Downloads", "mvp", ...)
+mvp_path <- function(...) fs::path_home("Downloads", "mvp", ...)
 
 # Data ----
 
 input_name <- "swim.csv"
-input_path <- here("input", input_name)
+input_path <- mvp_path("input", input_name)
 input_path
 #> /home/rstudio/Downloads/mvp/input/swim.csv
 
@@ -57,7 +57,7 @@ clean
 
 # Save ----
 
-output_path <- here("output", paste0("clean_", input_name))
+output_path <- mvp_path("output", paste0("clean_", input_name))
 output_path
 #> /home/rstudio/Downloads/mvp/output/clean_swim.csv
 
