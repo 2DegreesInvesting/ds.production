@@ -17,7 +17,7 @@ input_path
 
 raw <- read_csv(input_path, show_col_types = FALSE)
 raw
-#> # A tibble: 5 × 3
+#> # A tibble: 5 x 3
 #>   name  where     temp
 #>   <chr> <chr>    <dbl>
 #> 1 Adam  beach       95
@@ -46,7 +46,7 @@ clean <- localized |>
   mutate(temp = if_else(english == "US", f_to_c(temp) * 5/9, temp))
 
 clean
-#> # A tibble: 5 × 4
+#> # A tibble: 5 x 4
 #>   name  where     temp english
 #>   <chr> <chr>    <dbl> <chr>  
 #> 1 Adam  beach     19.4 US     
