@@ -2,33 +2,21 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ``` r
-# Packages ----
-
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 
-# Functions ----
-
 mvp_path <- function(...) fs::path_home("Downloads", "mvp", ...)
 
-localize_beach <- function(data) {
-  # Localize beach
-  lookup_table <- tribble(
-        ~where, ~english,
-       "beach",     "US",
-       "coast",     "US",
-    "seashore",     "UK",
-     "seaside",     "UK"
-  )
-  
-  left_join(data, lookup_table)
-}
+
+
 
 celsify_temp <- function(data) {
   mutate(data, temp = if_else(english == "US", f_to_c(temp) * 5/9, temp))
 }
 
 f_to_c <- function(x) (x - 32) * 5/9
+
+
 
 input_name <- "swim.csv"
 input_path <- mvp_path("input", input_name)
