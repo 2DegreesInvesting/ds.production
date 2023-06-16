@@ -6,7 +6,29 @@
 
 library(dplyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
+
+# Functions ----
+
 mvp_path <- function(...) fs::path_home("Downloads", "mvp", ...)
+
+localize_beach <- function(data) {
+  # Localize beach
+  lookup_table <- tribble(
+        ~where, ~english,
+       "beach",     "US",
+       "coast",     "US",
+    "seashore",     "UK",
+     "seaside",     "UK"
+  )
+  
+  left_join(data, lookup_table)
+}
+
+celsify_temp <- function(data) {
+  mutate(data, temp = if_else(english == "US", f_to_c(temp) * 5/9, temp))
+}
+
+f_to_c <- function(x) (x - 32) * 5/9
 
 # Data ----
 
@@ -28,22 +50,11 @@ raw
 
 # Clean ----
 
-# Localize beach
-lookup_table <- tribble(
-      ~where, ~english,
-     "beach",     "US",
-     "coast",     "US",
-  "seashore",     "UK",
-   "seaside",     "UK"
-)
-localized <- raw |> 
-  left_join(lookup_table)
+
+localized <- localize_beach(raw)
 #> Joining with `by = join_by(where)`
 
-# Celsify temp
-f_to_c <- function(x) (x - 32) * 5/9
-clean <- localized |> 
-  mutate(temp = if_else(english == "US", f_to_c(temp) * 5/9, temp))
+clean <- celsify_temp(localized)
 
 clean
 #> # A tibble: 5 x 4
