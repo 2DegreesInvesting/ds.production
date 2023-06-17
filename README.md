@@ -109,43 +109,20 @@ Copy the code, excluding data.
 
 <!-- -->
 
-    error: Your local changes to the following files would be overwritten by checkout:
-        README.Rmd
-        README.md
-    Please commit your changes or stash them before you switch branches.
-    Aborting
+    Switched to branch '1-reproduce'
     .
     ├── DESCRIPTION
     ├── LICENSE
     ├── LICENSE.md
     ├── NAMESPACE
-    ├── NEWS.md
-    ├── R
-    │   ├── celsify_temp.R
-    │   ├── localize_beach.R
-    │   ├── production-package.R
-    │   ├── utils-tidy-eval.R
-    │   └── utils.R
     ├── README.Rmd
-    ├── README.md
-    ├── _pkgdown.yml
-    ├── man
-    │   ├── celsify_temp.Rd
-    │   ├── localize_beach.Rd
-    │   ├── production-package.Rd
-    │   └── tidyeval.Rd
-    ├── production.Rproj
-    ├── tests
-    │   ├── testthat
-    │   │   ├── test-celsify_temp.R
-    │   │   └── test-localize_beach.R
-    │   └── testthat.R
-    └── vignettes
-        └── articles
-            └── cleaning-swimming-data.Rmd
-    Already on 'main'
-    M   README.Rmd
-    M   README.md
+    ├── inst
+    │   └── extdata
+    │       ├── mvp.Rmd
+    │       └── mvp.md
+    └── production.Rproj
+    Switched to branch 'main'
+    Your branch is up to date with 'origin/main'.
 
 - HACK: Redirect paths to the data with minimal changes.
 
@@ -208,19 +185,15 @@ Snapshots
 
 New files
 
-    error: Your local changes to the following files would be overwritten by checkout:
-        README.Rmd
-        README.md
-    Please commit your changes or stash them before you switch branches.
-    Aborting
+    Switched to branch '2-snapshot'
     tests
     ├── testthat
-    │   ├── test-celsify_temp.R
-    │   └── test-localize_beach.R
+    │   ├── _snaps
+    │   │   └── capture-outputs.md
+    │   └── test-capture-outputs.R
     └── testthat.R
-    Already on 'main'
-    M   README.Rmd
-    M   README.md
+    Switched to branch 'main'
+    Your branch is up to date with 'origin/main'.
 
 WARNING: Don’t share snapshots of private data! You may use a dedicated
 tests/testthat/private/ directory, add it to .gitignore and test it with
