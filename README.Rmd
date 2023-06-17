@@ -170,7 +170,6 @@ git show 3-refactor:R/celsify_temp.R
 
 tests/
 
-
 ```{bash echo=FALSE, results='markup', comment=""}
 git show 3-refactor:tests/testthat/test-celsify_temp.R | tail -15
 ```
