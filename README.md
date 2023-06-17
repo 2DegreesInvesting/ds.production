@@ -1,25 +1,13 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 
 # production
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of production is to help you support the refactoring of an MVP to clean
-swim data.
+The goal of production is to help you support the refactoring of an MVP
+to clean swim data.
 
 ## Installation
 
@@ -32,7 +20,7 @@ devtools::install_github("<some where on GitHub>/production")
 
 ## Example
 
-```{r example}
+``` r
 library(production)
 
 # styler: off
@@ -49,4 +37,12 @@ raw <- tibble::tribble(
 raw |> 
   localize_beach() |> 
   celsify_temp()
+#> # A tibble: 5 × 4
+#>   name  where     temp english
+#>   <chr> <chr>    <dbl> <chr>  
+#> 1 Adam  beach     35   US     
+#> 2 Bess  coast     32.8 US     
+#> 3 Cora  seashore  28   UK     
+#> 4 Dale  beach     29.4 US     
+#> 5 Evan  seaside   31   UK
 ```

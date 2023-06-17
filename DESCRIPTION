@@ -6,9 +6,12 @@ Authors@R:
            comment = c(ORCID = "https://orcid.org/0000-0002-1986-7988"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
+Imports: 
+    dplyr,
+    rlang (>= 0.4.11),
+    tibble,
+    utils
 Suggests: 
-    fs,
-    readr,
     rmarkdown,
     roxygen2,
     testthat (>= 3.0.0)
@@ -16,8 +19,3 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Imports: 
-    dplyr,
-    rlang (>= 0.4.11),
-    tibble,
-    utils

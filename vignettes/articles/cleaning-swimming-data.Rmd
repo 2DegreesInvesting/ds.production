@@ -1,0 +1,39 @@
+---
+title: "Cleaning swim data with the 'production' package"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Packages
+
+```{r setup}
+library(production)
+```
+
+Data
+
+```{r}
+# styler: off
+raw <- tibble::tribble(
+   ~name,     ~where, ~temp,
+  "Adam",    "beach",    95,
+  "Bess",    "coast",    91,
+  "Cora", "seashore",    28,
+  "Dale",    "beach",    85,
+  "Evan",  "seaside",    31
+)
+# styler: on
+```
+
+Clean
+
+```{r}
+raw |> 
+  localize_beach() |> 
+  celsify_temp()
+```
