@@ -155,7 +155,6 @@ R/
 git show 3-refactor:R/celsify_temp.R
 ```
 
-
 `?celsify_temp()`
 
 <img src=https://github.com/2DegreesInvesting/ds.production/assets/5856545/20069a3e-3fb9-4d72-af8a-fd5ca48bada1 width=900>
