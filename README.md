@@ -1,8 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-Adapted from: [R Packages (2e) - Bravo: a better script that
-works](https://r-pkgs.org/package-within.html#bravo-a-better-script-that-works)
+# production
+
+The goal of production is to show how to refactor the package within
+your analysis code.
+
+Adapted from <https://r-pkgs.org/package-within.html>.
 
 ## 1. Reproduce
 
@@ -107,6 +111,7 @@ Copy the code, excluding data.
 
     error: Your local changes to the following files would be overwritten by checkout:
         README.Rmd
+        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     .
@@ -140,6 +145,7 @@ Copy the code, excluding data.
             └── cleaning-swimming-data.Rmd
     Already on 'main'
     M   README.Rmd
+    M   README.md
 
 - HACK: Redirect paths to the data with minimal changes.
 
@@ -204,6 +210,7 @@ New files
 
     error: Your local changes to the following files would be overwritten by checkout:
         README.Rmd
+        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     tests
@@ -213,6 +220,7 @@ New files
     └── testthat.R
     Already on 'main'
     M   README.Rmd
+    M   README.md
 
 WARNING: Don’t share snapshots of private data! You may use a dedicated
 tests/testthat/private/ directory, add it to .gitignore and test it with
@@ -314,3 +322,42 @@ tests/
       out <- celsify_temp(tibble(temp = 91, english = "US"))
       expect_equal(round(out$temp, 3), 32.778)
     })
+
+### Enjoy
+
+Packages
+
+``` r
+library(production)
+```
+
+Data
+
+``` r
+# styler: off
+raw <- tibble::tribble(
+   ~name,     ~where, ~temp,
+  "Adam",    "beach",    95,
+  "Bess",    "coast",    91,
+  "Cora", "seashore",    28,
+  "Dale",    "beach",    85,
+  "Evan",  "seaside",    31
+)
+# styler: on
+```
+
+Clean
+
+``` r
+raw |> 
+  localize_beach() |> 
+  celsify_temp()
+#> # A tibble: 5 × 4
+#>   name  where     temp english
+#>   <chr> <chr>    <dbl> <chr>  
+#> 1 Adam  beach     35   US     
+#> 2 Bess  coast     32.8 US     
+#> 3 Cora  seashore  28   UK     
+#> 4 Dale  beach     29.4 US     
+#> 5 Evan  seaside   31   UK
+```

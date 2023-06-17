@@ -15,7 +15,11 @@ show_path <- function(path) {
 }
 ```
 
-Adapted from: [R Packages (2e) - Bravo: a better script that works](https://r-pkgs.org/package-within.html#bravo-a-better-script-that-works)
+# production
+
+The goal of production is to show how to refactor the package within your analysis code. 
+
+Adapted from https://r-pkgs.org/package-within.html.
 
 ## 1. Reproduce
 
@@ -126,5 +130,11 @@ tests/
 
 ```{bash echo=FALSE, results='markup', comment=""}
 git show 4-improve:tests/testthat/test-celsify_temp.R | tail -4
+```
+
+### Enjoy
+
+```{r child="vignettes/articles/cleaning-swimming-data.Rmd"}
+
 ```
 
