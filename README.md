@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Software engineering: From MVP to production
+# From MVP to production
 
 If you wanted to build a skyscraper, you’ll intuitively know that you
 can’t do it yourself. You’ll need help to know what to do, how to do it,
