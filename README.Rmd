@@ -52,9 +52,9 @@ Copy the code, excluding data.
 * You can share public code regardless the privacy of the data.
 
 ```{bash echo=FALSE, results='markup', comment=""}
-git checkout 1-reproduce
+git checkout -q 1-reproduce
 Rscript -e 'fs::dir_tree()'
-git checkout main
+git checkout -q main
 ```
 
 * HACK: Redirect paths to the data with minimal changes.
@@ -80,9 +80,9 @@ git show 2-snapshot:tests/testthat/_snaps/capture-outputs.md
 New files
 
 ```{bash echo=FALSE, results='markup', comment=""}
-git checkout 2-snapshot
+git checkout -q 2-snapshot
 Rscript -e 'fs::dir_tree("tests")'
-git checkout main
+git checkout -q main
 ```
 
 WARNING: Don't share snapshots of private data! You may use a dedicated
