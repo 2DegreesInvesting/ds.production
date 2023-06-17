@@ -39,16 +39,19 @@ before, during, and after refactoring the focal code.
 
 Contents:
 
-1.  Reproduce: Making the focal code reproducible from a single
-    executable script.
+1.  [Reproduce](https://youtu.be/q3aPLh29XYI): Making the focal code
+    reproducible from a single executable script.
 
-2.  Snapshot: Capturing key outputs to characterize current behaviour.
+2.  [Snapshot](https://youtu.be/NIpuKAVlNbo): Capturing key outputs to
+    characterize current behaviour.
 
-3.  Refactor: Restructuring the code and testing the external behaviour
-    doesn’t change.
+3.  [Refactor](https://youtu.be/hCeMk6C0WyY): Restructuring the code and
+    testing the external behaviour doesn’t change.
 
-4.  Improve: Changing the external behaviour of the code, e.g. to fix
-    bugs.
+4.  [Improve](https://youtu.be/1UNH8m-e2pk): Changing the external
+    behaviour of the code, e.g. to fix bugs.
+
+The links point to live demos on YouTube.
 
 ## 1. Reproduce
 
@@ -156,7 +159,7 @@ Copy the code, excluding data.
 <!-- -->
 
     error: Your local changes to the following files would be overwritten by checkout:
-        README.Rmd
+        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     .
@@ -261,7 +264,7 @@ Snapshots
 New files
 
     error: Your local changes to the following files would be overwritten by checkout:
-        README.Rmd
+        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     tests
