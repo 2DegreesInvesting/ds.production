@@ -200,6 +200,12 @@ Copy the code, excluding data.
       expect_snapshot(e$clean)
     })
 
+    rmd_environment <- function(path = system.file("extdata", "mvp.Rmd", package = "production")) {
+      e <- new.env()
+      rmarkdown::render(path, envir = e, quiet = TRUE)
+      e
+    }
+
 Snapshots
 
     # `localized` hasn't changed
