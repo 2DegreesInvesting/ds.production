@@ -14,7 +14,6 @@ test_that("without crucial columns errors gracefully", {
 })
 
 test_that("91 Farenheit is converted to about 32.8 Celsius", {
-  skip("FIXME: f_to_c() already multiplies by 5/9, so we do it twice!")
   out <- celsify_temp(tibble(temp = 91, english = "US"))
   expect_equal(round(out$temp, 3), 32.778)
 })

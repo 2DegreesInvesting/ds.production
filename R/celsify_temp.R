@@ -16,7 +16,7 @@ celsify_temp <- function(data) {
 
   mutate(
     data,
-    temp = if_else(.data$english == "US", f_to_c(.data$temp) * 5 / 9, .data$temp)
+    temp = if_else(.data$english == "US", f_to_c(.data$temp), .data$temp)
   )
 }
 
