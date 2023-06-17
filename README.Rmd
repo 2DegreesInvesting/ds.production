@@ -7,46 +7,124 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  comment = "#>"
 )
+
+show_path <- function(path) {
+  writeLines(fs::path_rel(path))
+}
 ```
 
-# production
+Adapted from: [R Packages (2e) - Bravo: a better script that works](https://r-pkgs.org/package-within.html#bravo-a-better-script-that-works)
 
-<!-- badges: start -->
-<!-- badges: end -->
+## 1. Reproduce
 
-The goal of production is to help you support the refactoring of an MVP to clean
-swim data.
+Make the process reproducible from an executable script.
 
-## Installation
+Ensure the original code is reproducible.
 
-You can install the development version of production like so:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("<some where on GitHub>/production")
+```{r echo=FALSE, results='asis'}
+path <- fs::path("~/Downloads", "mvp", "README.md")
+show_path(path)
+```
+```{r results='asis', echo=FALSE}
+writeLines(readLines(path))
 ```
 
-## Example
+Note the data is inside the project:
 
-```{r example}
-library(production)
+  * It might be too large to use version control with Git.
+  * It might be private, while everything else might be public.
 
-# styler: off
-raw <- tibble::tribble(
-   ~name,     ~where, ~temp,
-  "Adam",    "beach",    95,
-  "Bess",    "coast",    91,
-  "Cora", "seashore",    28,
-  "Dale",    "beach",    85,
-  "Evan",  "seaside",    31
-)
-# styler: on
-
-raw |> 
-  localize_beach() |> 
-  celsify_temp()
+```{r echo=FALSE, comment=""}
+fs::dir_tree("~/Downloads/mvp/")
 ```
+
+Build infrastructure to support refactoring ([R packages (2e)](https://r-pkgs.org/)).
+
+Copy the code, excluding data.
+
+* You can now use Git to track code versions, regardless the size of the data.
+* You can share public code regardless the privacy of the data.
+
+```{bash echo=FALSE, results='markup', comment=""}
+git checkout 1-reproduce
+Rscript -e 'fs::dir_tree()'
+git checkout main
+```
+
+* HACK: Redirect paths to the data with minimal changes.
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 1-reproduce:inst/extdata/mvp.Rmd | head -24 | tail -10
+```
+
+## 2. Snapshot
+
+Capture key outputs to characterize the current behaviour.
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 2-snapshot:tests/testthat/test-capture-outputs.R
+```
+
+Snapshots
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 2-snapshot:tests/testthat/_snaps/capture-outputs.md
+```
+
+New files
+
+```{bash echo=FALSE, results='markup', comment=""}
+git checkout 2-snapshot
+Rscript -e 'fs::dir_tree("tests")'
+git checkout main
+```
+
+WARNING: Don't share snapshots of private data! You may use a dedicated
+tests/testthat/private/ directory, add it to .gitignore and test it with
+`test_dir(test_path("private"))`.
+
+### 3. Refactor
+
+> Refactoring is a disciplined technique for restructuring an existing body of
+code, altering its internal structure without changing its external behavior --
+https://refactoring.com/
+
+Extract smaller units of meaningful behavior (functions) and test them.
+
+inst/extdata/mvp.Rmd
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 3-refactor:inst/extdata/mvp.Rmd | head -28 | tail -14
+```
+
+R/
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 3-refactor:R/celsify_temp.R
+```
+
+tests/
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 3-refactor:tests/testthat/test-celsify_temp.R | tail -15
+```
+
+### 4. Improve
+
+* Discuss the current behaviour.
+* Fix bugs.
+* Remove duplication.
+* Implement new behaviour.
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 4-improve:R/celsify_temp.R | tail -11
+```
+
+tests/
+
+```{bash echo=FALSE, results='markup', comment=""}
+git show 4-improve:tests/testthat/test-celsify_temp.R | tail -4
+```
+
