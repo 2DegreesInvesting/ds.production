@@ -144,10 +144,8 @@ Build infrastructure to support automated workflows (see [R packages
 (2e)](https://r-pkgs.org/)), e.g.:
 
 - `usethis::create_package()`
-- `devtools::check()`
-- `usethis::use_testthat()`
-- `usethis::use_test()`
-- `devtools::test()`
+- `devtools::check()` (then address errors, warnings, and notes).
+- `usethis::use_directory("inst/extdata")`
 
 Copy the code, excluding data.
 
@@ -187,6 +185,10 @@ Copy the code, excluding data.
 ## 2. Snapshot
 
 *Capturing key outputs to characterize current behaviour*
+
+- `usethis::use_test("capture-outputs")`
+
+<!-- -->
 
     test_that("`localized` hasn't changed", {
       e <- rmd_environment()
