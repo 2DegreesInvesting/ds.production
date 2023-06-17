@@ -3,21 +3,31 @@
 
 # Software engineering: From MVP to production
 
-If you wanted to build a skyscraper, your intuition will tell you that
-the task is complex, and that you’ll need help to know what to do, how
-to do it, and how long it will take. Even if you wanted, you can’t do it
-yourself because civil-engineering regulations will block you.
+If you wanted to build a skyscraper, you’ll intuitively know that you
+can’t do it yourself. You’ll need help to know what to do, how to do it,
+and how long it will take. Even if you wanted, civil-engineering
+regulations would stop you. But software engineering is relatively new,
+few people intuitively know how complex it can be, and no regulation
+would stop you for trying yourself.
 
-But software engineering is relatively new. Few people have the
-experience to intuitively know what to do, how to do it, and how long it
-will take. If you wanted to do it yourself, no regulation will block
-you.
+The goal of this article is to help a data science team to better
+understand how software evolves from a Minimum Viable Product (MVP) to
+production – from a script that “works for me” to an R package that
+works for anyone anywhere.
 
-The goal of this article is to help a data science team to develop that
-intuition. The focus is on the less technical folks, since they are the
-least exposed to software engineering. It shows how software evolves
-from a Minimum Viable Product (MVP) to production – from a script that
-“works for me” to an R package that works for anyone anywhere.
+> Refactoring is a disciplined technique for restructuring an existing
+> body of code, altering its internal structure without changing its
+> external behavior.
+
+> Its heart is a series of small behavior preserving transformations.
+> Each transformation (called a “refactoring”) does little, but a
+> sequence of these transformations can produce a significant
+> restructuring. Since each refactoring is small, it’s less likely to go
+> wrong. The system is kept fully working after each refactoring,
+> reducing the chances that a system can get seriously broken during the
+> restructuring.
+
+– <https://refactoring.com/>
 
 The book [R packages (2e)](https://r-pkgs.org) shows how to refactor R
 code to extract the hidden [package
@@ -141,7 +151,6 @@ Copy the code, excluding data.
 
     error: Your local changes to the following files would be overwritten by checkout:
         README.Rmd
-        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     .
@@ -237,7 +246,6 @@ New files
 
     error: Your local changes to the following files would be overwritten by checkout:
         README.Rmd
-        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     tests
