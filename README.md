@@ -35,7 +35,9 @@ within](https://r-pkgs.org/package-within.html) an analysis script.
 
 Based on that example, this article expands the focus beyond the focal
 code. It includes the infrastructure and tests that support the process
-before, during, and after refactoring the focal code:
+before, during, and after refactoring the focal code.
+
+Contents:
 
 1.  Reproduce: Making the focal code reproducible from a single
     executable script.
@@ -50,7 +52,7 @@ before, during, and after refactoring the focal code:
 
 ## 1. Reproduce
 
-Make the process reproducible from an executable script.
+*Making the focal code reproducible from a single executable script*
 
 Ensure the original code is reproducible.
 
@@ -151,6 +153,7 @@ Copy the code, excluding data.
 
     error: Your local changes to the following files would be overwritten by checkout:
         README.Rmd
+        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     .
@@ -200,7 +203,7 @@ Copy the code, excluding data.
 
 ## 2. Snapshot
 
-Capture key outputs to characterize the current behaviour.
+*Capturing key outputs to characterize current behaviour*
 
     test_that("`localized` hasn't changed", {
       e <- rmd_environment()
@@ -246,6 +249,7 @@ New files
 
     error: Your local changes to the following files would be overwritten by checkout:
         README.Rmd
+        README.md
     Please commit your changes or stash them before you switch branches.
     Aborting
     tests
@@ -260,9 +264,8 @@ tests/testthat/private/ directory, add it to .gitignore and test it with
 
 ## 3. Refactor
 
-> Refactoring is a disciplined technique for restructuring an existing
-> body of code, altering its internal structure without changing its
-> external behavior – <https://refactoring.com/>
+*Restructuring the code and testing the external behaviour doesn’t
+change*
 
 inst/extdata/mvp.Rmd
 
@@ -326,6 +329,8 @@ tests/
     })
 
 ## 4. Improve
+
+*Changing the external behaviour of the code, e.g. to fix bugs*
 
 - Discuss the current behaviour.
 - Fix bugs.

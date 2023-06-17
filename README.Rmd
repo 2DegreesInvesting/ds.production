@@ -44,7 +44,9 @@ analysis script.
 
 Based on that example, this article expands the focus beyond the focal code. It
 includes the infrastructure and tests that support the process before, during,
-and after refactoring the focal code:
+and after refactoring the focal code.
+
+Contents:
 
 1. Reproduce: Making the focal code reproducible from a single executable
 script.
@@ -58,7 +60,8 @@ change.
 
 ## 1. Reproduce
 
-Make the process reproducible from an executable script.
+_Making the focal code reproducible from a single executable
+script_
 
 Ensure the original code is reproducible.
 
@@ -100,7 +103,7 @@ git show 1-reproduce:inst/extdata/mvp.Rmd | head -24 | tail -10
 
 ## 2. Snapshot
 
-Capture key outputs to characterize the current behaviour.
+_Capturing key outputs to characterize current behaviour_
 
 ```{bash echo=FALSE, results='markup', comment=""}
 git show 2-snapshot:tests/testthat/test-capture-outputs.R
@@ -126,9 +129,8 @@ tests/testthat/private/ directory, add it to .gitignore and test it with
 
 ## 3. Refactor
 
-> Refactoring is a disciplined technique for restructuring an existing body of
-code, altering its internal structure without changing its external behavior --
-https://refactoring.com/
+_Restructuring the code and testing the external behaviour doesn't
+change_
 
 inst/extdata/mvp.Rmd
 
@@ -149,6 +151,8 @@ git show 3-refactor:tests/testthat/test-celsify_temp.R | tail -15
 ```
 
 ## 4. Improve
+
+_Changing the external behaviour of the code, e.g. to fix bugs_
 
 * Discuss the current behaviour.
 * Fix bugs.
