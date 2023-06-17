@@ -3,10 +3,40 @@
 
 # production
 
-The goal of production is to show how to refactor the package within
-your analysis code.
+If you wanted to build a skyscraper, your intuition will tell you that
+the task is complex, and that you’ll need help to know what to do, how
+to do it, and how long it will take. Even if you wanted, you can’t do it
+yourself because civil-engineering regulations will block you.
 
-Adapted from <https://r-pkgs.org/package-within.html>.
+But software engineering is relatively new. Few people have the
+experience to intuitively know what to do, how to do it, and how long it
+will take. If you wanted to do it yourself, no regulation will block
+you.
+
+The goal of this article is to help a data science team to develop that
+intuition. The focus is on the less technical folks, since they are the
+least exposed to software engineering. It shows how software evolves
+from a Minimum Viable Product (MVP) to production – from a script that
+“works for me” to an R package that works for anyone anywhere.
+
+The book [R packages (2e)](https://r-pkgs.org) shows how to refactor R
+code to extract the hidden [package
+within](https://r-pkgs.org/package-within.html) an analysis script.
+
+Based on that example, this article expands the focus beyond the focal
+code. It includes the infrastructure and tests that support the process
+before, during, and after refactoring the focal code:
+
+1.  Reproduce: Making the focal code reproducible from a single
+    executable script.
+
+2.  Snapshot: Capturing key outputs to characterize current behaviour.
+
+3.  Refactor: Restructuring the code and testing the external behaviour
+    doesn’t change.
+
+4.  Improve: Changing the external behaviour of the code, e.g. to fix
+    bugs.
 
 ## 1. Reproduce
 
@@ -109,17 +139,40 @@ Copy the code, excluding data.
 
 <!-- -->
 
+    error: Your local changes to the following files would be overwritten by checkout:
+        README.Rmd
+        README.md
+    Please commit your changes or stash them before you switch branches.
+    Aborting
     .
     ├── DESCRIPTION
     ├── LICENSE
     ├── LICENSE.md
     ├── NAMESPACE
+    ├── NEWS.md
+    ├── R
+    │   ├── celsify_temp.R
+    │   ├── localize_beach.R
+    │   ├── production-package.R
+    │   ├── utils-tidy-eval.R
+    │   └── utils.R
     ├── README.Rmd
-    ├── inst
-    │   └── extdata
-    │       ├── mvp.Rmd
-    │       └── mvp.md
-    └── production.Rproj
+    ├── README.md
+    ├── _pkgdown.yml
+    ├── man
+    │   ├── celsify_temp.Rd
+    │   ├── localize_beach.Rd
+    │   ├── production-package.Rd
+    │   └── tidyeval.Rd
+    ├── production.Rproj
+    ├── tests
+    │   ├── testthat
+    │   │   ├── test-celsify_temp.R
+    │   │   └── test-localize_beach.R
+    │   └── testthat.R
+    └── vignettes
+        └── articles
+            └── cleaning-swimming-data.Rmd
 
 - HACK: Redirect paths to the data with minimal changes.
 
@@ -182,24 +235,26 @@ Snapshots
 
 New files
 
+    error: Your local changes to the following files would be overwritten by checkout:
+        README.Rmd
+        README.md
+    Please commit your changes or stash them before you switch branches.
+    Aborting
     tests
     ├── testthat
-    │   ├── _snaps
-    │   │   └── capture-outputs.md
-    │   └── test-capture-outputs.R
+    │   ├── test-celsify_temp.R
+    │   └── test-localize_beach.R
     └── testthat.R
 
 WARNING: Don’t share snapshots of private data! You may use a dedicated
 tests/testthat/private/ directory, add it to .gitignore and test it with
 `test_dir(test_path("private"))`.
 
-### 3. Refactor
+## 3. Refactor
 
 > Refactoring is a disciplined technique for restructuring an existing
 > body of code, altering its internal structure without changing its
 > external behavior – <https://refactoring.com/>
-
-Extract smaller units of meaningful behavior (functions) and test them.
 
 inst/extdata/mvp.Rmd
 
@@ -262,7 +317,7 @@ tests/
       expect_equal(round(out$temp, 3), 32.778)
     })
 
-### 4. Improve
+## 4. Improve
 
 - Discuss the current behaviour.
 - Fix bugs.
@@ -290,7 +345,7 @@ tests/
       expect_equal(round(out$temp, 3), 32.778)
     })
 
-### Enjoy
+## Enjoy
 
 Packages
 
