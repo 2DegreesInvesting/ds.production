@@ -155,17 +155,40 @@ Copy the code, excluding data.
 
 <!-- -->
 
+    error: Your local changes to the following files would be overwritten by checkout:
+        README.Rmd
+        README.md
+    Please commit your changes or stash them before you switch branches.
+    Aborting
     .
     ├── DESCRIPTION
     ├── LICENSE
     ├── LICENSE.md
     ├── NAMESPACE
+    ├── NEWS.md
+    ├── R
+    │   ├── celsify_temp.R
+    │   ├── localize_beach.R
+    │   ├── production-package.R
+    │   ├── utils-tidy-eval.R
+    │   └── utils.R
     ├── README.Rmd
-    ├── inst
-    │   └── extdata
-    │       ├── mvp.Rmd
-    │       └── mvp.md
-    └── production.Rproj
+    ├── README.md
+    ├── _pkgdown.yml
+    ├── man
+    │   ├── celsify_temp.Rd
+    │   ├── localize_beach.Rd
+    │   ├── production-package.Rd
+    │   └── tidyeval.Rd
+    ├── production.Rproj
+    ├── tests
+    │   ├── testthat
+    │   │   ├── test-celsify_temp.R
+    │   │   └── test-localize_beach.R
+    │   └── testthat.R
+    └── vignettes
+        └── articles
+            └── cleaning-swimming-data.Rmd
 
 - HACK: Redirect paths to the data with minimal changes.
 
@@ -238,11 +261,15 @@ Snapshots
 
 New files
 
+    error: Your local changes to the following files would be overwritten by checkout:
+        README.Rmd
+        README.md
+    Please commit your changes or stash them before you switch branches.
+    Aborting
     tests
     ├── testthat
-    │   ├── _snaps
-    │   │   └── capture-outputs.md
-    │   └── test-capture-outputs.R
+    │   ├── test-celsify_temp.R
+    │   └── test-localize_beach.R
     └── testthat.R
 
 WARNING: Don’t share snapshots of private data! You may use a dedicated
@@ -296,6 +323,10 @@ R/
     }
 
     f_to_c <- function(x) (x - 32) * 5 / 9
+
+`?celsify_temp()`
+
+<img src=https://github.com/2DegreesInvesting/ds.production/assets/5856545/20069a3e-3fb9-4d72-af8a-fd5ca48bada1 width=900>
 
 tests/
 
