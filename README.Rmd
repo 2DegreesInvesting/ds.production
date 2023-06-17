@@ -86,10 +86,8 @@ Build infrastructure to support automated workflows (see [R packages
 (2e)](https://r-pkgs.org/)), e.g.:
 
 * `usethis::create_package()`
-* `devtools::check()`
-* `usethis::use_testthat()`
-* `usethis::use_test()`
-* `devtools::test()`
+* `devtools::check()` (then address errors, warnings, and notes).
+* `usethis::use_directory("inst/extdata")`
 
 Copy the code, excluding data.
 
@@ -111,6 +109,8 @@ git show 1-reproduce:inst/extdata/mvp.Rmd | head -24 | tail -10
 ## 2. Snapshot
 
 _Capturing key outputs to characterize current behaviour_
+
+* `usethis::use_test("capture-outputs")`
 
 ```{bash echo=FALSE, results='markup', comment=""}
 git show 2-snapshot:tests/testthat/test-capture-outputs.R

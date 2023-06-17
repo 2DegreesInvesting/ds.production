@@ -140,8 +140,14 @@ Note the data is inside the project:
     └── output
         └── clean_swim.csv
 
-Build infrastructure to support refactoring ([R packages
-(2e)](https://r-pkgs.org/)).
+Build infrastructure to support automated workflows (see [R packages
+(2e)](https://r-pkgs.org/)), e.g.:
+
+- `usethis::create_package()`
+- `devtools::check()`
+- `usethis::use_testthat()`
+- `usethis::use_test()`
+- `devtools::test()`
 
 Copy the code, excluding data.
 
