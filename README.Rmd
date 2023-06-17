@@ -116,6 +116,10 @@ _Capturing key outputs to characterize current behaviour_
 git show 2-snapshot:tests/testthat/test-capture-outputs.R
 ```
 
+```{bash echo=FALSE, results='markup', comment=""}
+git show 2-snapshot:R/utils.R
+```
+
 Snapshots
 
 ```{bash echo=FALSE, results='markup', comment=""}
