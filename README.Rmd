@@ -119,6 +119,8 @@ _Capturing key outputs to characterize current behaviour_
 git show 2-snapshot:tests/testthat/test-capture-outputs.R
 ```
 
+R/utils.R
+
 ```{bash echo=FALSE, results='markup', comment=""}
 git show 2-snapshot:R/utils.R
 ```
@@ -152,6 +154,8 @@ inst/extdata/mvp.Rmd
 git show 3-refactor:inst/extdata/mvp.Rmd | head -28 | tail -14
 ```
 
+* `usethis::use_r("celsify_temp")`
+
 R/
 
 ```{bash echo=FALSE, results='markup', comment=""}
@@ -162,7 +166,10 @@ git show 3-refactor:R/celsify_temp.R
 
 <img src=https://github.com/2DegreesInvesting/ds.production/assets/5856545/20069a3e-3fb9-4d72-af8a-fd5ca48bada1 width=600>
 
+* `usethis::use_r("celsify_temp")`
+
 tests/
+
 
 ```{bash echo=FALSE, results='markup', comment=""}
 git show 3-refactor:tests/testthat/test-celsify_temp.R | tail -15

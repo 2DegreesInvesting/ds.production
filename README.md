@@ -158,17 +158,39 @@ Copy the code, excluding data.
 
 <!-- -->
 
+    error: Your local changes to the following files would be overwritten by checkout:
+        README.Rmd
+    Please commit your changes or stash them before you switch branches.
+    Aborting
     .
     ├── DESCRIPTION
     ├── LICENSE
     ├── LICENSE.md
     ├── NAMESPACE
+    ├── NEWS.md
+    ├── R
+    │   ├── celsify_temp.R
+    │   ├── localize_beach.R
+    │   ├── production-package.R
+    │   ├── utils-tidy-eval.R
+    │   └── utils.R
     ├── README.Rmd
-    ├── inst
-    │   └── extdata
-    │       ├── mvp.Rmd
-    │       └── mvp.md
-    └── production.Rproj
+    ├── README.md
+    ├── _pkgdown.yml
+    ├── man
+    │   ├── celsify_temp.Rd
+    │   ├── localize_beach.Rd
+    │   ├── production-package.Rd
+    │   └── tidyeval.Rd
+    ├── production.Rproj
+    ├── tests
+    │   ├── testthat
+    │   │   ├── test-celsify_temp.R
+    │   │   └── test-localize_beach.R
+    │   └── testthat.R
+    └── vignettes
+        └── articles
+            └── cleaning-swimming-data.Rmd
 
 - HACK: Redirect paths to the data with minimal changes.
 
@@ -202,6 +224,8 @@ Copy the code, excluding data.
       e <- rmd_environment()
       expect_snapshot(e$clean)
     })
+
+R/utils.R
 
     rmd_environment <- function(path = system.file("extdata", "mvp.Rmd", package = "production")) {
       e <- new.env()
@@ -241,11 +265,14 @@ Snapshots
 
 New files
 
+    error: Your local changes to the following files would be overwritten by checkout:
+        README.Rmd
+    Please commit your changes or stash them before you switch branches.
+    Aborting
     tests
     ├── testthat
-    │   ├── _snaps
-    │   │   └── capture-outputs.md
-    │   └── test-capture-outputs.R
+    │   ├── test-celsify_temp.R
+    │   └── test-localize_beach.R
     └── testthat.R
 
 WARNING: Don’t share snapshots of private data! You may use a dedicated
@@ -273,6 +300,8 @@ inst/extdata/mvp.Rmd
 
     output_path <- mvp_path("output", paste0("clean_", input_name))
     write_csv(clean, output_path)
+
+- `usethis::use_r("celsify_temp")`
 
 R/
 
@@ -303,6 +332,8 @@ R/
 `?celsify_temp()`
 
 <img src=https://github.com/2DegreesInvesting/ds.production/assets/5856545/20069a3e-3fb9-4d72-af8a-fd5ca48bada1 width=600>
+
+- `usethis::use_r("celsify_temp")`
 
 tests/
 
